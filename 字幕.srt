@@ -1,0 +1,560 @@
+1
+00:00:00,000 --> 00:00:03,390
+我有字幕啦 百姓网啊啊啊
+You've seen me draw a few pictures of your neural network in this video
+
+2
+00:00:03,460 --> 00:00:06,020
+我们将讨论 这些图形的具体含义
+we'll talk about exactly what those pictures means
+
+3
+00:00:06,080 --> 00:00:08,730
+换句话说 就是我们画的这些神经网络
+in other words exactly what those little neural networks
+
+4
+00:00:08,770 --> 00:00:10,700
+到底代表什么
+have been drawing on represent
+
+5
+00:00:10,750 --> 00:00:13,560
+我们先集中精力看看
+and we'll starts with focusing on the case of
+
+6
+00:00:13,630 --> 00:00:16,930
+只有一个隐藏层的神经网络
+neural networks with what's called a single hidden layer
+
+7
+00:00:16,980 --> 00:00:18,920
+这是一张神经网络图
+here's a picture of a neural network
+
+8
+00:00:18,990 --> 00:00:22,330
+我们命名一下这张图的各部分
+let's give different parts of these pictures some names
+
+9
+00:00:22,330 --> 00:00:26,570
+我们有输入特征x1 x2 x3 竖向堆叠起来
+we have the input features x1 x2 x3 stacked vertically
+
+10
+00:00:26,620 --> 00:00:30,790
+这是神经网络的输入层
+and this is called the input layer of the neural network
+
+11
+00:00:31,390 --> 00:00:32,640
+没什么特别的
+so maybe not surprisingly
+
+12
+00:00:32,690 --> 00:00:35,180
+它包含了神经网络的输入
+this contains the inputs to the neural network
+
+13
+00:00:35,230 --> 00:00:38,260
+然后这里有另外一层的圆圈
+then there's another layer of circles
+
+14
+00:00:38,290 --> 00:00:42,140
+我们称之为神经网络的隐藏层
+and this is called a hidden layer of the neural network
+
+15
+00:00:42,200 --> 00:00:45,130
+我们马上会讲到 "隐藏"是什么意思
+I'll come back in a second to say what the word hidden means
+
+16
+00:00:45,190 --> 00:00:47,660
+这里的最后一层
+but the final layer here is formed
+
+17
+00:00:47,700 --> 00:00:49,170
+在这里只有一个节点
+by in this case just one node
+
+18
+00:00:49,220 --> 00:00:53,090
+而这个只带一个节点的层就是输出层
+and this single note layer is called the output layer
+
+19
+00:00:53,130 --> 00:00:56,960
+它负责输出 预测值y帽
+and it's responsible for generating the predicted value y hat.
+
+20
+00:00:57,020 --> 00:01:00,120
+在一个神经网络中 当你使用监督学习训练它的时候
+In a neural network the you train with supervised learning
+
+21
+00:01:00,200 --> 00:01:03,200
+训练集包含了输入x
+the training set contains values of the inputs x
+
+22
+00:01:03,230 --> 00:01:05,350
+还有目标输出y
+as well as the target outputs y
+
+23
+00:01:05,390 --> 00:01:08,520
+“隐藏层”的含义是
+so the term hidden layer refers to the fact that
+
+24
+00:01:08,560 --> 00:01:11,320
+在训练集中 这些中间节点的真正数值
+in a training set the true values for these nodes
+
+25
+00:01:11,370 --> 00:01:12,860
+我们是不知道的
+in the middle are not observed
+
+26
+00:01:12,920 --> 00:01:15,630
+在训练集你看不到它们的数值
+that is you don't see what they should be in the training set
+
+27
+00:01:15,670 --> 00:01:16,840
+你能看到输入值
+you see what the inputs are
+
+28
+00:01:16,890 --> 00:01:18,170
+也能看见输出值
+you see what the output should be
+
+29
+00:01:18,240 --> 00:01:19,510
+但是隐藏层中的值
+but the things in a hidden layer
+
+30
+00:01:19,580 --> 00:01:21,340
+在训练集中 是无法看到的
+are not seen in the training set
+
+31
+00:01:21,420 --> 00:01:24,420
+这就是所谓的“隐藏层”
+so that kind of explains the name hidden layer
+
+32
+00:01:24,490 --> 00:01:26,420
+只是表示你无法在训练集中看到
+just means you don't see it in a training set
+
+33
+00:01:26,500 --> 00:01:28,270
+现在我们再引入几个符号
+let's introduce a bit more notation
+
+34
+00:01:28,350 --> 00:01:33,540
+之前我们用向量x表示输入特征
+whereas previously we were using the vector x to denote the input features
+
+35
+00:01:33,600 --> 00:01:37,940
+输入特征的数值还有另外一种表示方式
+an alternative notation for the values of the input features
+
+36
+00:01:37,990 --> 00:01:41,100
+我们用a^[0]来表示
+will be a superscript square bracket 0
+
+37
+00:01:41,200 --> 00:01:44,230
+而这个a 也表示"激活"的意思
+and the term a also stands for activations
+
+38
+00:01:44,290 --> 00:01:49,160
+它意味着网络中不同层的值
+and it refers to the values that different layers of the neural network
+
+39
+00:01:49,210 --> 00:01:51,660
+会传递给后面的层
+are passing on to the subsequent layers
+
+40
+00:01:51,720 --> 00:01:55,910
+输入层将x的值 传递给隐藏层
+so the input layer passes on the value x to the hidden layer
+
+41
+00:01:55,980 --> 00:01:57,290
+我们将输入层的激活值
+so we're going to call that
+
+42
+00:01:57,340 --> 00:02:01,480
+称为a上标[0]
+call the activations of the input layer a superscript 0
+
+43
+00:02:01,550 --> 00:02:02,870
+下一层即隐藏层
+the next layer the hidden layer
+
+44
+00:02:02,930 --> 00:02:06,010
+也同样会产生一些激活值
+will in turn generate some set of activations
+
+45
+00:02:06,070 --> 00:02:10,060
+那么我将其记作 a^[1]
+which I'm going to write as a superscript square bracket 1
+
+46
+00:02:10,090 --> 00:02:13,450
+具体地 这里的第一个单元 或者说节点
+so in particular this first unit or this first node
+
+47
+00:02:13,510 --> 00:02:18,060
+我们将其表示为 a^[1]_1
+we generate the value a superscript square bracket 1 subscript 1
+
+48
+00:02:18,120 --> 00:02:23,480
+第二个节点 我们记为 a^[1]2 以此类推
+this second node we generate the value now with a subscript 2 and so on
+
+49
+00:02:23,520 --> 00:02:25,980
+这里的a^[1]
+and so a superscript square bracket 1
+
+50
+00:02:26,030 --> 00:02:28,910
+是一个四维向量
+this is a four dimensional vector
+
+51
+00:02:28,970 --> 00:02:30,860
+写成Python代码
+or if you write it in Python
+
+52
+00:02:30,910 --> 00:02:34,230
+它是一个4x1矩阵 或大小为4的列向量
+it gives us a four by one matrix or four column vector
+
+53
+00:02:34,280 --> 00:02:36,560
+就像我画的这样 它是四维的
+which looks like this and it's four dimensional
+
+54
+00:02:36,630 --> 00:02:38,960
+是因为在本例中 我们有四个节点
+because in this case we have four nodes
+
+55
+00:02:39,020 --> 00:02:43,380
+有四个单元 四个隐藏层单元
+or four units or four hidden units in this hidden layer
+
+56
+00:02:43,450 --> 00:02:44,940
+最后的输出层
+then finally the output layer
+
+57
+00:02:45,000 --> 00:02:48,370
+会产生某个数值a^[2] 是个实数
+will generate some value a^[2] which is just a real number
+
+58
+00:02:48,420 --> 00:02:53,230
+y帽的值就等于a^[2]
+and so y hat is going to take on the value of a^[2]
+
+59
+00:02:53,290 --> 00:02:55,680
+所以这和 logistic回归类似
+so this is analogous to how in logistic regression
+
+60
+00:02:55,740 --> 00:02:59,260
+在logistic回归中 y帽等于a
+we have y hat equals a and in logistic regression
+
+61
+00:02:59,320 --> 00:03:02,290
+我们只有一个输出层
+we only had that one output layer
+
+62
+00:03:02,340 --> 00:03:04,730
+所以没有用带方括号的上标
+so we didn't use the superscript square bracket
+
+63
+00:03:04,780 --> 00:03:06,010
+但是在神经网络中
+but with a neural network
+
+64
+00:03:06,070 --> 00:03:08,500
+我们将使用这种方括号上标
+we're now going to use this superscript square bracket
+
+65
+00:03:08,550 --> 00:03:11,620
+来明确地指出这些值来自哪一层
+to explicitly indicate which layer it came from
+
+66
+00:03:11,680 --> 00:03:15,470
+有趣的是 在约定俗成的符号中
+one funny thing about notational conventions in neural networks
+
+67
+00:03:15,530 --> 00:03:17,690
+在这里你看到的这个例子
+is that this network that you're seeing here
+
+68
+00:03:17,740 --> 00:03:20,600
+是所谓的双层神经网络
+is called a two layer neural network
+
+69
+00:03:20,630 --> 00:03:24,420
+当我们计算网络的层数时
+and the reason is that when we count layers in neural networks
+
+70
+00:03:24,460 --> 00:03:26,630
+不算入输入层的原因是
+we don't count the input layer
+
+71
+00:03:26,680 --> 00:03:28,650
+隐藏层是第一层
+so the hidden layer is layer 1
+
+72
+00:03:28,710 --> 00:03:30,730
+输出层是第二层
+and the output layer is layer two
+
+73
+00:03:30,780 --> 00:03:32,130
+在我们的符号约定中
+In our notational convention
+
+74
+00:03:32,210 --> 00:03:34,120
+我们将输入层称为第零层
+we're calling the input layer layer 0
+
+75
+00:03:34,190 --> 00:03:35,990
+所以在字面上可以说
+so technically maybe there are
+
+76
+00:03:36,040 --> 00:03:37,760
+这是一个“三层的”神经网络
+three layers in this neural network
+
+77
+00:03:37,820 --> 00:03:39,740
+因为这里有输入层 隐藏层
+because this is input layer the hidden layer
+
+78
+00:03:39,800 --> 00:03:42,160
+还有输出层  但一般符号的约定是
+and the output layer but in conventional users
+
+79
+00:03:42,200 --> 00:03:44,910
+如果你阅读研究论文 或者在这门课中
+if you read research papers and also in the course
+
+80
+00:03:44,970 --> 00:03:47,210
+你会看到人们将这个神经网络
+you see people refer to this particular neural network
+
+81
+00:03:47,260 --> 00:03:49,350
+称为双层神经网络
+as a two layer neural network
+
+82
+00:03:49,410 --> 00:03:52,580
+因为我们不把输入层 看作一个标准的层
+because we don't count input layer as a as an official layer
+
+83
+00:03:52,640 --> 00:03:54,610
+最后我们要知道
+finally something that we'll get to later
+
+84
+00:03:54,670 --> 00:03:57,250
+隐藏层 以及最后的输出层
+is that the hidden layer and the output layers
+
+85
+00:03:57,300 --> 00:03:59,670
+是带有参数的
+will have parameters associated with it
+
+86
+00:03:59,700 --> 00:04:04,650
+这里的隐藏层有两个相关的参数W和b
+so the hidden layer will have associated with their parameters w and b
+
+87
+00:04:04,730 --> 00:04:07,720
+使用上标[1]
+and I'm going to write superscript square bracket 1
+
+88
+00:04:07,780 --> 00:04:09,860
+表示这些参数
+to indicate that these are parameters
+
+89
+00:04:09,920 --> 00:04:12,050
+是和第一层这个隐藏层有关的
+associated with layer 1 with a hidden layer
+
+90
+00:04:12,100 --> 00:04:15,850
+之后我们会看到 W是一个4x3的矩阵
+we'll see later that W will be a 4 by 3 matrix
+
+91
+00:04:15,910 --> 00:04:19,570
+而b在这个例子中是一个4x1向量
+and b will be a 4 by 1 vector in this example
+
+92
+00:04:19,630 --> 00:04:21,580
+第一个数字4
+where the first coordinate 4
+
+93
+00:04:21,640 --> 00:04:24,530
+意思是有四个节点 或者说四个隐藏单元
+comes from the fact that we have four nodes or four hidden units
+
+94
+00:04:24,580 --> 00:04:26,630
+然后数字3来自
+there and three comes from the fact
+
+95
+00:04:26,690 --> 00:04:28,590
+这里有三个输入特征
+that we have three input features
+
+96
+00:04:28,670 --> 00:04:31,200
+之后会更加详细地 讨论这些矩阵的维数
+we'll talk later about the dimensions of these matrices
+
+97
+00:04:31,240 --> 00:04:32,870
+到那时 你可能就更明白了
+and it might make more sense at that time
+
+98
+00:04:32,930 --> 00:04:35,890
+类似地 输出层也有一些
+but in similarly the output layer has associated with it
+
+99
+00:04:35,890 --> 00:04:40,450
+和它有关的参数W^[2]
+also parameters w superscript square bracket 2
+
+100
+00:04:40,490 --> 00:04:42,390
+以及b^[2]
+and b superscript square bracket 2
+
+101
+00:04:42,440 --> 00:04:44,000
+从维数来看
+and it turns out that the dimensions of these
+
+102
+00:04:44,050 --> 00:04:46,170
+分别是1x4以及1x1
+are one by four and one by one
+
+103
+00:04:46,170 --> 00:04:49,560
+这是1×4 是因为隐藏层有四个隐藏单元
+ and this one by fours because the hidden layer has four hidden units
+
+104
+00:04:49,630 --> 00:04:51,600
+而输出层只有一个单元
+the output layer has just one unit
+
+105
+00:04:51,660 --> 00:04:53,770
+之后的视频中 我们会对这些矩阵和向量的维度
+and we're going we'll go over the dimensions
+
+106
+00:04:53,830 --> 00:04:55,920
+做更加深入的解释
+of these matrices and vectors in a later video
+
+107
+00:04:56,000 --> 00:04:59,940
+所以你现在已经知道 一个双层神经网络是怎样的
+so you've just seen what a two layer neural network looks like
+
+108
+00:05:00,000 --> 00:05:02,630
+它是只有一个隐藏层的神经网络
+that is a neural network with one hidden layer
+
+109
+00:05:02,700 --> 00:05:05,360
+在下一个视频中 我们将更深入地
+in the next video let's go deeper into exactly
+
+110
+00:05:05,510 --> 00:05:07,610
+了解这个神经网络到底在计算什么
+what this neural network is computing
+
+111
+00:05:07,680 --> 00:05:10,500
+这个神经网络是怎么输入x
+that is how this neural network inputs x
+
+112
+00:05:10,550 --> 00:05:13,770
+然后又是怎么一直算下去得到y帽的
+and goes all the way to computing this output y hat
+
